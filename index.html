@@ -372,6 +372,82 @@
             .section-title { font-size: 2rem; }
             .join-container { padding: 28px; }
         }
+ /* 中继台网络 - 新增多台中继样式 */
+        .repeater-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 30px;
+        }
+        .repeater-card {
+            background: white;
+            border-radius: 32px;
+            padding: 28px 24px;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08);
+            transition: transform 0.25s ease, box-shadow 0.25s;
+            border: 1px solid #e2edff;
+            position: relative;
+            overflow: hidden;
+        }
+        .repeater-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 40px -16px rgba(10,102,194,0.2);
+            border-color: var(--primary-light);
+        }
+        .repeater-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eef2fa;
+            padding-bottom: 16px;
+        }
+        .repeater-header i {
+            font-size: 2.6rem;
+            color: var(--primary);
+        }
+        .repeater-header h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0a2540;
+        }
+        .repeater-detail {
+            margin-top: 12px;
+        }
+        .freq-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed #e0edff;
+            font-weight: 500;
+        }
+        .freq-label {
+            color: #4a627a;
+        }
+        .freq-value {
+            font-family: monospace;
+            font-weight: 700;
+            color: var(--primary-dark);
+            letter-spacing: 0.5px;
+        }
+        .coverage {
+            background: #eef4fc;
+            border-radius: 24px;
+            padding: 12px 16px;
+            margin-top: 18px;
+            font-size: 0.9rem;
+        }
+        .badge-repeater {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 60px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -398,6 +474,9 @@
         <div class="slideshow-container">
             <div class="slide active" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://cdn.zuanshijia.top/%E6%AD%A6%E9%BB%84750%E4%B8%9A%E4%BD%99%E6%97%A0%E7%BA%BF%E7%94%B5%E4%BF%B1%E4%B9%90%E9%83%A8%E9%83%A8%E6%A0%87%E6%AD%A3%E5%BC%8F%E7%89%88%E6%8A%A0%E5%9B%BE.png'); background-size: cover;">
                 <div class="slide-content"><h2>业余无线电 · 信号无界</h2><p>CQ CQ 这里是武黄750俱乐部，技术交流和通联</p></div>
+            </div>
+            <div class="slide active" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://cdn.zuanshijia.top/wh750together.jpg'); background-size: cover;">
+                <div class="slide-content"><h2>共同搭建 · 努力无边</h2><p>欢迎各位爱好者们加入我们</p></div>
             </div>
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -433,6 +512,63 @@
                 </div>
             </div>
         </div>
+  <!-- ========= 中继台网络 (新增多个中继台) ========= -->
+    <section id="repeaters" style="background: #ffffff;">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-broadcast-tower"></i> 中继台网络</h2>
+            <div class="section-sub">武黄750俱乐部联合各个区域，搭建链路，保障交流</div>
+            <div class="repeater-grid">
+                <!-- 中继 1: 黄石下陆 -->
+                <div class="repeater-card">
+                    <div class="badge-repeater">主中继</div>
+                    <div class="repeater-header">
+                        <i class="fas fa-broadcast-tower"></i>
+                        <h3>武黄750-黄石</h3>
+                    </div>
+                    <div class="repeater-detail">
+                        <div class="freq-row"><span class="freq-label">下行频率 (RX)</span><span class="freq-value">437.750 MHz</span></div>
+                        <div class="freq-row"><span class="freq-label">上行频率 (TX)</span><span class="freq-value">430.750 MHz</span></div>
+                        <div class="freq-row"><span class="freq-label">亚音 (CTCSS)</span><span class="freq-value">发射88.5 Hz</span></div>
+                        <div class="freq-row"><span class="freq-label">模式</span><span class="freq-value">模拟 FM</span></div>
+                        <div class="coverage"><i class="fas fa-map-marker-alt"></i> 正在建设</div>
+                    </div>
+                </div>
+                <!-- 中继 2: 黄石 -->
+                <div class="repeater-card">
+                    <div class="badge-repeater">应急备用站</div>
+                    <div class="repeater-header">
+                        <i class="fas fa-broadcast-tower"></i>
+                        <h3>武黄750-黄石下陆</h3>
+                    </div>
+                    <div class="repeater-detail">
+                        <div class="freq-row"><span class="freq-label">下行频率 (RX)</span><span class="freq-value">439.950 MHz</span></div>
+                        <div class="freq-row"><span class="freq-label">上行频率 (TX)</span><span class="freq-value">431.750 MHz</span></div>
+                        <div class="freq-row"><span class="freq-label">亚音 (CTCSS)</span><span class="freq-value">发射88.5 Hz</span></div>
+                        <div class="freq-row"><span class="freq-label">模式</span><span class="freq-value">模拟 FM</span></div>
+                        <div class="coverage"><i class="fas fa-tree"></i> 黄石下陆</div>
+                    </div>
+                </div>
+                <!-- 中继 3: 武汉 -->
+                <div class="repeater-card">
+                    <div class="badge-repeater">链路台</div>
+                    <div class="repeater-header">
+                        <i class="fas fa-plane"></i>
+                        <h3>武黄750-汉阳</h3>
+                    </div>
+                    <div class="repeater-detail">
+                        <div class="freq-row"><span class="freq-label">下行频率 (RX)</span><span class="freq-value">439.180 MHz</span></div>
+                        <div class="freq-row"><span class="freq-label">上行频率 (TX)</span><span class="freq-value">430.180 MHz</span></div>
+                        <div class="freq-row"><span class="freq-label">亚音 (CTCSS)</span><span class="freq-value">发射179.9 Hz</span></div>
+                        <div class="freq-row"><span class="freq-label">模式</span><span class="freq-value">模拟 FM</span></div>
+                        <div class="coverage"><i class="fas fa-road"></i> 武汉经开区</div>
+                    </div>
+                </div>
+            </div>
+            <div style="background:#eef4fc; border-radius: 30px; padding: 20px 28px; margin-top: 40px; text-align: center;">
+                <i class="fas fa-waveform"></i> <strong>中继使用规范</strong>：所有中继均开放各位HAM，请遵守业余无线电法规，文明通联。
+            </div>
+        </div>
+    </section>
 
         <div class="values-grid">
             <div class="value-card"><i class="fas fa-handshake"></i><h3>专业·合法</h3><p>严格遵守无线电法规，全员持证操作，后续将会依法设置中继台</p></div>
